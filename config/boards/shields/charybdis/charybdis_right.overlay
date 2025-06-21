@@ -72,3 +72,21 @@
 
   };
 };
+
+/ {
+    chosen {
+        zmk,pointing-device = &trackball0;
+    };
+};
+
+&spi1 {               /* шина, к которой подключён датчик */
+    status = "okay";
+    trackball0: pmw3360@0 {
+        compatible = "pixart,pmw3360";
+        reg = <0>;                /* CS = 0 */
+        irq-gpios = <&gpio0 27 GPIO_ACTIVE_LOW>; /* ваш пин IRQ */
+        spi-max-frequency = <2000000>;
+        cpi = <800>;             /* чувствительность, пераздастся в DPI */
+        label = "TRACKBALL";
+    };
+};
