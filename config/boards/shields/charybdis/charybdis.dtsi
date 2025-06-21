@@ -1,3 +1,23 @@
+/dts-v1/;
+
+/ {
+    chosen {
+        zmk,pointing-device = &trackball0;
+    };
+
+    &spi1 {               /* шина, к которой подключён датчик */
+        status = "okay";
+        trackball0: pmw3360@0 {
+            compatible = "zmk,trackball";  // Совместимость для ZMK
+            reg = <0>;                     // CS = 0
+            irq-gpios = <&gpio0 27 GPIO_ACTIVE_LOW>;  // Пин IRQ
+            spi-max-frequency = <2000000>; // Максимальная частота SPI
+            cpi = <800>;                   // Чувствительность (можно настроить)
+            label = "TRACKBALL";           // Метка устройства
+        };
+    };
+};
+
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
