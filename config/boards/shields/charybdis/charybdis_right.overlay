@@ -81,12 +81,11 @@
 
 &spi1 {               /* шина, к которой подключён датчик */
     status = "okay";
-    trackball0: pmw3360@0 {
-        compatible = "pixart,pmw3360";
-        reg = <0>;                /* CS = 0 */
-        irq-gpios = <&gpio0 27 GPIO_ACTIVE_LOW>; /* ваш пин IRQ */
-        spi-max-frequency = <2000000>;
-        cpi = <800>;             /* чувствительность, пераздастся в DPI */
-        label = "TRACKBALL";
-    };
+  trackball0: pmw3360@0 {
+    compatible = "zmk,trackball";  // Совместимость для ZMK
+    reg = <0>;                     // CS = 0
+    irq-gpios = <&gpio0 27 GPIO_ACTIVE_LOW>;  // Пин IRQ
+    spi-max-frequency = <2000000>; // Максимальная частота SPI
+    cpi = <800>;                   // Чувствительность (можно настроить)
+    label = "TRACKBALL";           // Метка устройства
 };
