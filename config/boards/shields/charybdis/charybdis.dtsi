@@ -5,7 +5,7 @@
         zmk,pointing-device = &trackball0;
     };
 
-    &spi1 {  /* Шина, к которой подключён датчик */
+    &spi1 {               /* Шина, к которой подключён датчик */
         status = "okay";
         trackball0: pmw3360@0 {
             compatible = "zmk,trackball";  // Совместимость для ZMK
@@ -46,7 +46,6 @@
         };
     };
 
-    /* Повторное использование spi1, который уже настроен */
     &spi1 {
         status = "okay";
         trackball0: pmw3360@0 {
@@ -59,13 +58,13 @@
         };
     };
 
-    /* Включаем слушателя для trackball */
+    /* Привязка к трекболу */
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball0>;  // Привязка к trackball0
     };
 
-    /* Включение конфигурации для питания */
+    /* Параметры для питания */
     vbatt: vbatt {
         compatible = "zmk,battery-nrf-vddh";
     };
